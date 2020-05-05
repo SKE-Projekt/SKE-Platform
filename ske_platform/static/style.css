@@ -1,0 +1,21 @@
+.stopa {
+    bottom: .5rem;
+    right: .5rem;
+    position: fixed;
+    z-index: 1;
+
+}
+
+.stopa > h5 {
+    font-weight: bold;;
+}
+
+.contact-tiles {
+    margin: auto;
+}
+
+.form-narrow {
+    width: 91vw;
+    max-width: 555px;
+    margin: .5em auto;
+}

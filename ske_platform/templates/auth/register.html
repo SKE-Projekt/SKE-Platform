@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="section has-text-centered">
+    <h1 class="title">
+        Załóż konto
+    </h1>
+    <form method="post" class="form-narrow has-text-centered">
+        {{ register_form.csrf_token }}
+        <div class="field">
+            <div class="control">
+                {{ register_form.username.label }}
+                {{ register_form.username(class_="input is-primary", placeholder="Nazwa użytkownika") }}
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                {{ register_form.password.label }}
+                {{ register_form.password(class_="input is-primary", placeholder="Hasło") }}
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                {{ register_form.email.label }}
+                {{ register_form.email(class_="input is-primary", placeholder="Adres email") }}
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                {{ register_form.first_name.label }}
+                {{ register_form.first_name(class_="input is-primary", placeholder="Imię") }}
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                {{ register_form.last_name.label }}
+                {{ register_form.last_name(class_="input is-primary", placeholder="Nazwisko") }}
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <a href="{{ url_for('auth.login') }}">Masz już konto? Zaloguj się!</a>
+
+        <br />
+        <br />
+        <button type="submit" class="button is-warning is-light">Załóż konto</button>
+    </form>
+</div>
+{% endblock content %}
