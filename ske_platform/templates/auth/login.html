@@ -3,7 +3,7 @@
 {% block content %}
 <div class="section has-text-centered">
     <h1 class="title">Zaloguj się</h1>
-    <form action="post" class="form-narrow has-text-centered">
+    <form method="post" class="form-narrow has-text-centered">
         {{ login_form.csrf_token }}
         <div class="field">
             <div class="control">
