@@ -8,6 +8,10 @@ class LoginForm(FlaskForm):
     username = StringField(label='Nazwa użytkownika', validators=[DataRequired()])
     password = PasswordField(label='Hasło', validators=[DataRequired()])
 
+class RegisterForm(FlaskForm):
+    username = StringField(label='Nazwa użytkownika', validators=[DataRequired()])
+    password = PasswordField(label='Hasło', validators=[DataRequired()])
+
     email = EmailField(label='Adres email', validators=[DataRequired()])
     first_name = StringField(label='Imię', validators=[DataRequired()])
     last_name = StringField(label='Nazwisko', validators=[DataRequired()])

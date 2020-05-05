@@ -1,7 +1,7 @@
 from flask import render_template
 
 from . import auth, login_manager
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 
 
 @login_manager.user_loader
@@ -15,3 +15,8 @@ def load_user(user_id):
 def login():
     login_form = LoginForm()
     return render_template('auth/login.html', login_form=login_form)
+
+@auth.route('/register')
+def register():
+    register_form = RegisterForm()
+    return render_template('auth/register.html', register_form=register_form)
