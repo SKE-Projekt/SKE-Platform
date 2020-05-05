@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask_migrate import Migrate
+from flask_login import LoginManager
 
 
 app = Flask(__name__)
@@ -11,5 +12,9 @@ from .database import db
 db.init_app(app)
 mg = Migrate(app, db)
 
+
 from .auth import auth
 app.register_blueprint(auth)
+
+from .auth import login_manager
+login_manager.init_app(app)
