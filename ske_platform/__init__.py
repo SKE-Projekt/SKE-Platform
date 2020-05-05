@@ -8,10 +8,12 @@ from flask_login import LoginManager
 app = Flask(__name__)
 app.config.from_object(os.getenv('CONFIG_CLASS'))
 
+from flask_wtf.csrf import CSRFProtect
+csrf = CSRFProtect(app)
+
 from .database import db
 db.init_app(app)
 mg = Migrate(app, db)
-
 
 from .auth import auth
 app.register_blueprint(auth)
