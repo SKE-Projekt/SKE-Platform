@@ -11,3 +11,5 @@ class User(UserMixin, db):
 
     first_name = db.Column(db.String(128), nullable=False)
     last_name = db.Column(db.String(128), nullable=False)
+
+    is_superuser = db.Column(db.Boolean)
