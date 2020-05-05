@@ -30,6 +30,7 @@ def login():
         else:
             if check_password_hash(user.password, login_form.password.data):
                 login_user(user)
+                redirect('landing')
             else:
                 flash('Złe hasło i/lub nazwa użytkownika!', 'danger')
     return render_template('auth/login.html', login_form=login_form)
