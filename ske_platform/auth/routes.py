@@ -1,6 +1,6 @@
 from flask import render_template, request, flash, redirect,abort
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 from ske_platform.database import db
 from . import auth, login_manager
@@ -21,6 +21,9 @@ def unauthorized_callback():
 
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
+    if current_user.is_authenticated:
+        flash('Musisz sie wylogować aby to zrobić!', 'warning is-light')
+        return redirect('/')
     login_form = LoginForm(request.form)
 
     if request.method == 'POST' and login_form.validate():
@@ -30,6 +33,7 @@ def login():
         else:
             if check_password_hash(user.password, login_form.password.data):
                 login_user(user)
+                return redirect('/')
             else:
                 flash('Złe hasło i/lub nazwa użytkownika!', 'danger')
     return render_template('auth/login.html', login_form=login_form)
@@ -47,6 +51,10 @@ def logout():
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
+    if current_user.is_authenticated:
+        flash('Musisz sie wylogować aby to zrobić!', 'warning is-light')
+        return redirect('/')
+
     register_form = RegisterForm(request.form)
 
     if request.method == 'POST' and register_form.validate():
@@ -57,4 +65,5 @@ def register():
             db.session.add(user)
             db.session.commit()
             flash('Możesz się teraz zalogować!', 'success')
+            return redirect('login')
     return render_template('auth/register.html', register_form=register_form)
