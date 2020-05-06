@@ -31,7 +31,14 @@
 
     {% block content %}{% endblock %}
 
+    <script src="{{ url_for('static', filename='jquery/jquery.min.js') }}"></script>
     <script src="https://kit.fontawesome.com/f582c00ddb.js" crossorigin="anonymous"></script>
+
+    <script>
+        $('.delete').click(function() {
+            $(this).parent().remove();
+        });
+    </script>
 
     {% block scripts %}{% endblock scripts %}
 </body>
