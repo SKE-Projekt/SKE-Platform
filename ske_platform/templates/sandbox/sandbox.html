@@ -11,16 +11,46 @@
 {% endblock library_js %}
 
 {% block content %}
-<section class="hero sandbox-hero is-info has-text-centered">
-    <div class="hero-body">
-        <div id="editor" class="editor"></div>
-        <a id="executeCode" href="" class="button is-success">Uruchom program</a>
+<div class="tabs is-centered is-boxed" style="margin-top: 4px;">
+    <ul>
+        <li class="is-active">
+            <a>
+                <span class="icon is-small"><i class="fas fa-flask"></i></span>
+                <span>Sandbox</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="hero sandbox-hero has-text-centered">
+    <div class="hero-body sandbox-hero-body">
+        <div class="columns">
+            <div class="column is-two-thirds-desktop is-full-mobile is-full-tablet">
+                <div id="editor" class="editor"></div>
+
+                {% if current_user.is_authenticated %}
+                <a id="executeCode" href="" class="button is-success">Uruchom program</a>
+                {% else %}
+                <a href="{{ url_for('auth.login') }}">Aby skorzystać z sandboxa musisz być zalogowany.</a>
+                {% endif %}
+            </div>
+            <div id="input-column" class="column is-one-third-desktop is-full-mobile is-full-tablet">
+                <h1 class="title" style="margin-bottom: 1px;">Wejście</h1>
+                <div class="section input-data">
+                    <div class="control">
+                        <textarea id="input-data" class="textarea is-info"
+                            placeholder="Tutaj wpisz wejście swojego programu - linijka po linijce."></textarea>
+                    </div>
+                </div>
+                <h1 class="title" style="margin-bottom: 1px;">Wyjście programu</h1>
+                <div class="section output-data">
+                    <div class="control">
+                        <textarea id="" class="textarea" placeholder="Nie wiem czemu to nie działa" readonly></textarea>
+                    </div>
+                    <a href="" id="output-data-show" style="margin-top: 1rem;display: inline-block;">Pokaż</a>
+                </div>
+            </div>
+        </div>
     </div>
-    {% include 'sandbox/_nav_sandbox.html' %}
-</section>
-
-<section class="section">
-
 </section>
 {% endblock content %}
 

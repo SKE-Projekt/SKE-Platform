@@ -15,7 +15,6 @@
 </head>
 
 <body>
-    {% include "_footer.html" %}
     {% include "_nav.html" %}
 
     {% with messages = get_flashed_messages(with_categories=True) %}
@@ -33,6 +32,7 @@
 
     {% block content %}{% endblock %}
 
+    {% include "_footer.html" %}
     <script src="https://kit.fontawesome.com/f582c00ddb.js" crossorigin="anonymous"></script>
     {% block library_js %}
     {% endblock library_js %}
