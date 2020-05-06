@@ -11,6 +11,12 @@
 {% endblock library_js %}
 
 {% block content %}
+<form id="hidden-code-form" class="is-hidden" method="post">
+    {{ form.csrf_token }}
+    {{ form.code }}
+    {{ form.input_data }}
+</form>
+
 <div class="tabs is-centered is-boxed" style="margin-top: 4px;">
     <ul>
         <li class="is-active">
@@ -28,7 +34,7 @@
                 <div id="editor" class="editor"></div>
 
                 {% if current_user.is_authenticated %}
-                <a id="executeCode" href="" class="button is-success">Uruchom program</a>
+                <a id="executeCode" href="#" class="button is-success">Uruchom program</a>
                 {% else %}
                 <a href="{{ url_for('auth.login') }}">Aby skorzystać z sandboxa musisz być zalogowany.</a>
                 {% endif %}
@@ -44,9 +50,10 @@
                 <h1 class="title" style="margin-bottom: 1px;">Wyjście programu</h1>
                 <div class="section output-data">
                     <div class="control">
-                        <textarea id="" class="textarea" placeholder="Nie wiem czemu to nie działa" readonly></textarea>
+                        <textarea id="output-data" class="textarea"
+                            placeholder="Tutaj pojawi się wyjście twojego programu" readonly></textarea>
                     </div>
-                    <a href="" id="output-data-show" style="margin-top: 1rem;display: inline-block;">Pokaż</a>
+                    <!-- <a href="" id="output-data-show" style="margin-top: 1rem;display: inline-block;">Pokaż</a> -->
                 </div>
             </div>
         </div>
@@ -97,7 +104,23 @@ wiek = read;
 
 <script>
     $('#executeCode').click(function () {
-        alert('Wysłano kod');
+        var code = mCEditor.getValue("</br>");
+        var input_data = $("#input-data").val().split('\n').join('</br>');
+
+        $("#code").val(code);
+        $("#input_data").val(input_data);
+        console.log(input_data);
+
+        $.post('/sandbox/api/evaluate', $("#hidden-code-form").serialize()).done(function (data) {
+            if (data['code'] != 0) {
+                $("#output-data").val("Twój program nie wykonał się poprawnie:\n" + data['msg']);
+            } else {
+                $("#output-data").val("Twój program wykonał się poprawnie:\n" + data['msg']);
+            }
+        }).fail(function (data) {
+            console.log(JSON.stringify(data));
+            $("#output-data").val("Twój program nie wykonał się poprawnie:\n" + data['msg']);
+        });
     });
 </script>
 {% endblock scripts %}
