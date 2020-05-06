@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bulma/bulma.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
+    {% block library_css %}
+    {% endblock library_css %}
 </head>
 
 <body>
@@ -32,6 +34,8 @@
     {% block content %}{% endblock %}
 
     <script src="https://kit.fontawesome.com/f582c00ddb.js" crossorigin="anonymous"></script>
+    {% block library_js %}
+    {% endblock library_js %}
 
     {% block scripts %}{% endblock scripts %}
 </body>
