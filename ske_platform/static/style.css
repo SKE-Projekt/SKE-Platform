@@ -19,3 +19,20 @@
     max-width: 555px;
     margin: .5em auto;
 }
+
+.editor {
+    width: 711px !important;
+    max-width: 81vw !important;
+    border-radius: 3px !important;
+    height: 511px !important;
+
+    margin: auto;
+}
+
+.CodeMirror {
+    padding: .5rem;
+    border-radius: 1rem;
+    height: 451px !important;
+    font-size: .95rem;
+    text-align: left;
+}

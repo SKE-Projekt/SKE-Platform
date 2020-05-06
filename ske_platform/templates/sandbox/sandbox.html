@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block library_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/theme/material.min.css" />
+{% endblock library_css %}
+
+{% block library_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/mode/python/python.min.js"></script>
+{% endblock library_js %}
+
+{% block content %}
+<section class="hero sandbox-hero is-info has-text-centered">
+    <div class="hero-body">
+        <div id="editor" class="editor"></div>
+        <a id="executeCode" href="" class="button is-success">Uruchom program</a>
+    </div>
+    {% include 'sandbox/_nav_sandbox.html' %}
+</section>
+
+<section class="section">
+
+</section>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    test_value = `# Cześć! To jest Ed. To znaczy to jest komentarz.
+# Przedstawimy poniżej jak Ed wygląda.
+# Mamy 6 różnych operatorów:
+# Dodawania
+12 + 3;
+
+# Odejmowania
+11 - 2;
+
+# Mnożenia
+42 * 2;
+
+# Dzielenia
+11 / 3;
+
+# Reszty z dzielenia(modulo)
+12 % 2;
+
+# Oraz specjalny operator przydzielenia
+wiek = 15; # Właśnie stworzyliśmy zmienną!
+
+# Operacje wykonywane są od lewej do prawej, możemy jednak
+# nad nimi kierować za pomocą nawiasów
+12 / 2 + 1;
+12 / (2 + 1);
+
+# Aby wczytać wartość od użytkownika należy użyć symbolu read
+wiek = read;
+`;
+
+    var editor = document.getElementById("editor");
+    var mCEditor = CodeMirror(editor, {
+        value: test_value,
+        mode: "python",
+        lineNumbers: true,
+        theme: "material"
+    });
+</script>
+{% endblock scripts %}
