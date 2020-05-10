@@ -49,38 +49,42 @@
         </div>
     </div>
 </section>
+
+<section class="hero is-warning has-text-centered">
+    <div class="hero-body">
+        <h1 class="title">Zainteresowany?</h1>
+    </div>
+</section>
+
+<section class="section has-text-centered">
+    <h1 class="title has-text-centered">Sprawdź swoje siły w konkursie</h1>
+    <div class="special-list has-text-left" style="margin: auto; display: inline-block;">
+        <h5 class="special-list-item" style="font-size: 1.2rem"><i class="fas fa-ethernet"></i> - Zadania sprawdzające
+            twoje rozumienie języka jak
+            i
+            programowania samego w sobie</h5>
+        <h5 class="special-list-item" style="font-size: 1.2rem"><i class="fas fa-ethernet"></i> - Możliwość sprawdzenia
+            się w rywalizacji z innymi
+            osobami w otwartym rankingu </h5>
+        <h5 class="special-list-item" style="font-size: 1.2rem"><i class="fas fa-ethernet"></i> - Zadania z wzrastającym
+            poziomem trudności
+        </h5>
+    </div>
+    <br>
+    <br>
+    <br>
+    <a href="" class="button is-info is-medium">Zapisz się</a>
+</section>
 {% endblock content %}
 
 {% block scripts %}
 <script>
-    test_value = `# Cześć! To jest Ed. To znaczy to jest komentarz.
-# Przedstawimy poniżej jak Ed wygląda.
-# Mamy 6 różnych operatorów:
-# Dodawania
-12 + 3;
+    test_value = `# Nie wiesz co i jak? Nie przejmuj się
+# przygotujemy kursy dzięki którym
+# pojmiesz Ed-a w mgnieniu oka
 
-# Odejmowania
-11 - 2;
-
-# Mnożenia
-42 * 2;
-
-# Dzielenia
-11 / 3;
-
-# Reszty z dzielenia(modulo)
-12 % 2;
-
-# Oraz specjalny operator przydzielenia
-wiek = 15; # Właśnie stworzyliśmy zmienną!
-
-# Operacje wykonywane są od lewej do prawej, możemy jednak
-# nad nimi kierować za pomocą nawiasów
-12 / 2 + 1;
-12 / (2 + 1);
-
-# Aby wczytać wartość od użytkownika należy użyć symbolu read
-wiek = read;
+String var = "Hello";
+Print(var, " World!");
 `;
 
     var editor = document.getElementById("editor");

@@ -8,7 +8,7 @@ class BaseConfig:
     SECRET_KEY = os.getenv('SECRET_KEY')
 
     # Ed settings
-    ED_BINARY = os.path.join(BASE_DIR_FLAT, '../ed/bin/edlang')
+    ED_BINARY = os.path.join(BASE_DIR_FLAT, '../Edlang/bin/edlang')
 
     # Database settings
     SQLALCHEMY_TRACK_MODIFICATIONS = False
