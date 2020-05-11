@@ -24,6 +24,9 @@ login_manager.init_app(app)
 from .sandbox import sandbox
 app.register_blueprint(sandbox)
 
+from .courses import courses
+app.register_blueprint(courses)
+
 @app.route('/')
 def landing():
     return render_template('ske/landing.html')
